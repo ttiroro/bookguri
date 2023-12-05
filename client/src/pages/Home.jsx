@@ -1,20 +1,16 @@
 import React from 'react'
 import './style/home.css'
 import Header from '../components/Header'
+import Banner from '../components/home/Banner'
+import HomeBest from '../components/home/HomeBest'
 import Footer from '../components/Footer'
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const Home = () => {
   return (
     <div>
         <Header />
-        <section className='home-banner'>
-            <div className='banner-inner'>
-                <IoIosArrowBack className='banner-back'/>
-                <img src="/images/banner-inner.svg" alt="banner01" />
-                <IoIosArrowForward className='banner-pre'/>
-            </div>
-        </section>
+        <Banner />
+        <HomeBest />
         <Footer />
     </div>
   )

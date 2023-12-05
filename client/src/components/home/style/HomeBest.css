@@ -1,0 +1,20 @@
+.home-bestseller{
+    margin: 30px 0;
+}
+
+.hb-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.hb-book{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.hb-book img{
+    height: 200px;
+}
+.hb-book-info{
+    margin-top: 20px;
+}

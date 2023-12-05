@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { RiSettings5Fill } from "react-icons/ri";
-import './style/header.css'
+import './style/Header.css'
 import $ from 'jquery'
 
 const Header = () => {
@@ -17,8 +17,7 @@ const Header = () => {
         <div className='head-inner'>
 
           <a href="/" className='logo'>
-            <img src="/images/logo.svg" alt="logo" />
-            <p>책거리</p>
+            <img src="/images/logo2.svg" alt="logo" />
           </a>
 
           <ul className='nav-list' id='nav-list'>
@@ -29,7 +28,7 @@ const Header = () => {
 
           <div className='nav-user'>
             <a href="/" className='nav-user-info'>
-              <img src="/images/user-df-img.svg" alt="user" />
+              <img src="/images/profil.svg" alt="user" />
               <p>user 님</p>
             </a>
             <button type='button' id='nav-btn' className='nav-btn'>
