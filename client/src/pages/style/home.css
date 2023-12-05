@@ -1,0 +1,16 @@
+.home-banner{
+    height: 800px;
+    background-image: url(../../../public/images/banner-bg.svg);
+    background-repeat: no-repeat;
+    position: relative;
+}
+.banner-inner{
+    position: absolute;
+    top: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.banner-inner{
+    
+}
