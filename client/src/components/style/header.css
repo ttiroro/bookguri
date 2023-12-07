@@ -1,6 +1,7 @@
 .header{
     padding: 20px 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 .head-inner{
     display: flex;
@@ -40,7 +41,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: transparent;
+    border: none;
 }
+.nav-user-info{
+    cursor: pointer;
+}
+
 .nav-user img{
     height: 30px;
 }
@@ -60,6 +67,17 @@
     font-size: 25px;
     color: #f96f7f;
 }
-.show{
-    visibility: visible;
+
+.nav-user-box{
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #555;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    z-index: 10;
+    right: 300px;
+    top: 80px;
+    display: none;
 }

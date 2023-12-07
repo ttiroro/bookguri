@@ -1,12 +1,9 @@
 import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 
 const Mybooks = () => {
   return (
     <div>
-      <Header/>
-      <Footer />
+      서재
     </div>
   )
 }

@@ -1,75 +1,53 @@
 .home-banner{
-    height: 600px;
-    background-image: url(../../../../public/images/banner-bg2.svg);
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 750px;
+    width: 100%;
+    overflow: hidden;
     position: relative;
 }
-.banner-box{
+.banner-list{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    transition: all 1s ease-in-out;
 }
-.banner-inner{
-    padding: auto 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-.banner-box .banner-back,
-.banner-box .banner-pre{
+.banner-back,
+.banner-next{
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
     color: rgba(255, 255, 255, 0.5);
     font-size: 50px;
-    margin: 0 50px;
-}
-.banner-inner{
-    color: #fff;
-    font-size: 35px;
-    font-weight: 600;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-}
-.banner-inner p{
-    line-height: 60px;
-}
-.banner-btn{
-    border: none;
-    background-color: #fdc9a5;
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
-.banner-btn a{
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+.banner-back{
+    position: absolute;
+    top: 365px;
+    left: 150px;
 }
-.banner-btn:hover{
-    background-color: #f96f7f;
-}
-.banner-img{
-    height: 300px;
-    padding-bottom: 50px;
+.banner-next{
+    position: absolute;
+    top: 365px;
+    right: 150px;
 }
 .banner-page{
     position: absolute;
-    bottom: 100px;
-    cursor: pointer;
+    bottom: 50px;
+    left: 960px;
 }
-.banner-page .page-one{
+.banner-page .page-one,
+.page-two,
+.page-thr{
     height: 12px;
     width: 12px;
     border-radius: 50%;
     background-color: #fff;
-    opacity: 0.5;
     border: none;
     margin: 0 5px;
+}
+.page-one{
+    opacity: 1;
+}
+.page-two,
+.page-thr{
+    opacity: 0.5;
 }

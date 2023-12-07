@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './style/home.css'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Banner from '../components/home/Banner'
 import HomeBest from '../components/home/HomeBest'
 
@@ -22,10 +20,8 @@ const Home = () => {
 
   return (
     <div>
-        <Header />
         <Banner />
         <HomeBest bookData={bestSellerData}/>
-        <Footer />
     </div>
   )
 }

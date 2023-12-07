@@ -8,15 +8,13 @@ import Home from '../pages/Home'
 
 const SetRoute = () => {
   return (
-    <div>
-        <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/bookguriinfo' element={<BookguriInfo />} />
-          <Route path='/mybooks' element={<MyBooks />} />
-          <Route path='/bestseller' element={<BestSeller />} />
-          <Route path='/setting' element={<Setting />} />
-        </Routes>
-    </div>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/bookguriinfo' element={<BookguriInfo />} />
+      <Route path='/mybooks' element={<MyBooks />} />
+      <Route path='/bestseller' element={<BestSeller />} />
+      <Route path='/setting' element={<Setting />} />
+    </Routes>
   )
 }
 

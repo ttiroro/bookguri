@@ -1,21 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { RiSettings5Fill } from "react-icons/ri";
-import './style/Header.css'
+import './style/header.css'
 import $ from 'jquery'
 
 const Header = () => {
-  let count = 0;
-  $('#nav-btn').on('click', ()=>{
-    count++;
-    count % 2 !== 0 ? $('#nav-list').addClass('show') : $('#nav-list').removeClass('show')
+
+  $('.nav-user-info').on('click', ()=>{
+    $('.nav-user-box').toggle();
   })
   
   return (
     <header className='header'>
+      <div className='nav-user-box'>
+        <p>user name</p>
+        <p>읽은 책 수</p>
+        <p>로그아웃</p>
+      </div>
       <nav className='container'>
         <div className='head-inner'>
-
           <a href="/" className='logo'>
             <img src="/images/logo2.svg" alt="logo" />
           </a>
@@ -27,20 +30,17 @@ const Header = () => {
           </ul>
 
           <div className='nav-user'>
-            <a href="/" className='nav-user-info'>
-              <img src="/images/profil.svg" alt="user" />
+            <img src="/images/profil.svg" alt="user" />
+            <button type='button' className='nav-user-info'>
               <p>user 님</p>
-            </a>
+            </button>
             <button type='button' id='nav-btn' className='nav-btn'>
               <Link to='/setting'>
                 <RiSettings5Fill className='nav-settings'/>
               </Link>
             </button>
           </div>
-
         </div>
-
-
       </nav>
     </header>
   )
