@@ -2,6 +2,7 @@ import React from 'react'
 import './style/HomeBest.css'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import $ from 'jquery'
 
 const HomeBest = ({bestSellerData}) => {
@@ -45,9 +46,6 @@ const HomeBest = ({bestSellerData}) => {
                 <div className='hb-left-text'>
                     <h2 className='hb-title'>베스트 셀러</h2>
                     <p className='hb-text'>이 주의 베스트셀러를 만나보세요!</p>
-                    <button type='button' className='hb-btn'>
-                        <Link to='/bestseller'>더 보러가기</Link>
-                    </button>
                 </div>
                 <p className='hb-aladin'>도서 DB 제공 : 알라딘 인터넷서점</p>
             </div>
@@ -55,7 +53,7 @@ const HomeBest = ({bestSellerData}) => {
             <div className='hb-list-out'>
                 <div className='hb-list'>
                     { bestSellerData.item &&
-                    bestSellerData.item.map((item, index)=> index < 7 && (
+                    bestSellerData.item.map((item, index)=> index < 6 && (
                             <Link to="#" className='hb-book' key={index}>
                                 <div className='hb-book-rank'>
                                     <p className='hb-book-rankText'>{item.bestRank}</p>
@@ -70,6 +68,13 @@ const HomeBest = ({bestSellerData}) => {
                             </Link>
                         ))
                     }
+                    <div className='hb-list-last'>
+                        <button type='button' className='hb-btn'>
+                            <Link to='/bestseller'>
+                                <span>더 보러가기</span> <MdKeyboardDoubleArrowRight className='arrowTwo'/>
+                            </Link>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className='hb-arrow'>

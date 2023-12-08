@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: 10px;
 }
 .hb-left-text{
     margin-top: 50px;
@@ -53,18 +54,38 @@
     width: 1890px;
     margin-bottom: 20px;
 }
+.hb-list-last{
+    height: 400px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .hb-btn{
-    background-image: linear-gradient(to bottom right, #72EDF2, #5151E5);
+    background-color: transparent;
     border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    margin-top: 20px;
     cursor: pointer;
 }
 .hb-btn a{
     color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #555;
+    width: 130px;
+    transition: all 300ms ease-in-out;
+}
+.hb-btn .arrowTwo{
+    font-size: 30px;
+    margin-top: 4px;
+}
+.hb-btn a:hover{
+    transform: translateX(20px);
+    color: #628ff9;
 }
 .hb-book{
     height: 400px;
