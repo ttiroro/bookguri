@@ -1,0 +1,93 @@
+.home-new{
+    width: 60%;
+    height: 700px;
+    margin: 20px 10px 20px 0;
+    padding: 40px;
+    border: 1px solid #eaf0f8;
+    border-radius: 15px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.hn-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    height: 60px;
+}
+.hn-title{
+    color: #555;
+    font-size: 30px;
+}
+.hn-btn{
+    background-image: linear-gradient(to bottom right, #72EDF2, #5151E5);
+    border: none;
+    border-radius: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.hn-btn a{
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+}
+.hn-list{
+    margin: 10px 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    overflow-y: scroll;
+}
+.hn-list::-webkit-scrollbar {
+    width: 5px;
+}
+.hn-list::-webkit-scrollbar-thumb {
+    background-color: #c5d4ef;
+    border-radius: 5px;
+}
+.hn-list::-webkit-scrollbar-track {
+    background-color: #eaf0f8;
+    border-radius: 5px;
+}
+.hn-book{
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.hn-book-cover{
+    width: 20%;
+}
+.hn-book-cover img{
+    width: 100px;
+}
+.hn-book-info{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.hn-book-info .hn-book-title{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+.hn-book-info .hn-book-author{
+    font-size: 14px;
+    color: #333;
+}
+.hn-book-info .hn-book-desc{
+    font-size: 12px;
+    color: #666;
+}
+.hn-aladin{
+    font-size: 10px;
+    color: #999;
+    float: right;
+}

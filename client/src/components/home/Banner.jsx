@@ -52,7 +52,7 @@ const Banner = () => {
 
     // page-circle
     return (
-        <section className='home-banner'>
+        <div className='home-banner'>
             <div className='banner-list'>
                 {
                     bannerImg.map((item, i)=>(
@@ -69,7 +69,7 @@ const Banner = () => {
                 <button className='page-two' type='button'></button>
                 <button className='page-thr' type='button'></button>
             </div>
-        </section>
+        </div>
     )
 }
 

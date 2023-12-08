@@ -1,0 +1,10 @@
+.home-rank{
+    width: 40%;
+    height: 700px;
+    margin: 20px 0px 20px 10px;
+    padding: 40px;
+    border: 1px solid #eaf0f8;
+    border-radius: 15px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+}

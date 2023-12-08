@@ -6,14 +6,20 @@
     align-items: center;
     font-family: 'Noto Sans KR', sans-serif;
     position: relative;
+    border: 1px solid #eaf0f8;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: #fff;
 }
 .hb-left{
-    width: 30%;
-    height: 300px;
+    width: 25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+}
+.hb-left-text{
+    margin-top: 50px;
 }
 .hb-title,
 .hb-text{
@@ -28,7 +34,7 @@
     color: #999;
 }
 .hb-list-out{
-    width: 70%;
+    width: 75%;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -45,9 +51,10 @@
     visibility: visible;
     transition: all 1500ms;
     width: 1890px;
+    margin-bottom: 20px;
 }
 .hb-btn{
-    background-image: linear-gradient(to bottom right, #FFD3A5, #FD6585);
+    background-image: linear-gradient(to bottom right, #72EDF2, #5151E5);
     border: none;
     border-radius: 30px;
     padding: 10px 20px;
@@ -79,13 +86,21 @@
     top: 15px;
 }
 .hb-book-rankText{
-    color: #555;
+    color: #628ff9;
     font-size: 25px;
     font-weight: 600;
 }
-.hb-book img{
+.hb-book-cover{
     height: 280px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    width: 235px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hb-book img{
+    max-height: 280px;
+    max-width: 235px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 .hb-book-info{
     margin-top: 20px;
@@ -103,14 +118,14 @@
 }
 
 .hb-arrow{
-    right: 60px;
-    bottom: 0;
+    right: 80px;
+    bottom: 35px;
     position: absolute;
 }
 .hb-back,
 .hb-next{
-    background-color: #FD6585;
-    border: 2px solid #FD6585;
+    background-color: #628ff9;
+    border: 2px solid #628ff9;
     color: #fff;
     height: 25px;
     width: 25px; 
@@ -119,8 +134,13 @@
     cursor: pointer;
     transition: all 200ms ease-in-out;
 }
+.hb-back svg,
+.hb-next svg{
+    background-color: transparent;
+}
 .hb-back:hover,
 .hb-next:hover{
     background-color: #fff;
-    color: #FD6585;
+    color: #628ff9;
+    border: 2px solid #fff;
 }

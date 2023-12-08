@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import './style/home.css'
 import Banner from '../components/home/Banner'
 import HomeBest from '../components/home/HomeBest'
+import HomeNew from '../components/home/HomeNew'
+import HomeRank from '../components/home/HomeRank'
 
-const Home = () => {
-
-  const [bestSellerData, setBestSellerData] = useState([]);
-  useEffect(() => {
-    async function fetchdata() {
-      const API_URL = '/ttb/api/ItemList.aspx?ttbkey=ttbdltjswjd2220957001&QueryType=Bestseller&MaxResults=30&start=1&SearchTarget=Book&Cover=Big&output=js&Version=20131101';
-      const { data } = await axios.get(API_URL);
-      setBestSellerData(data);
-    }
-    fetchdata();
-  },[]);
-
-  console.log(bestSellerData);
+const Home = ({bestSellerData, newBookData}) => {
 
   return (
-    <div>
+    <div className='home'>
+      <section className='sec01'>
         <Banner />
-        <HomeBest bookData={bestSellerData}/>
+      </section>
+      <section className='sec02 container'>
+        <HomeBest bestSellerData={bestSellerData}/>
+      </section>
+      <section className='sec03 container'>
+        <HomeNew newBookData={newBookData}/>
+        <HomeRank className='sec03-right'/>
+      </section>
     </div>
   )
 }

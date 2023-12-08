@@ -1,7 +1,6 @@
 .header{
     padding: 20px 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-    position: relative;
 }
 .head-inner{
     display: flex;
@@ -34,7 +33,10 @@
     color: #333;
 }
 .nav-list a:hover{
-    color: #f96f7f;
+    color: #717ffc;
+}
+.nav-user{
+    position: relative;
 }
 .nav-user,
 .nav-user-info{
@@ -65,9 +67,12 @@
 }
 .nav-btn .nav-settings{
     font-size: 25px;
-    color: #f96f7f;
+    color: #717ffc;
 }
 
+.box-show{
+    visibility: visible;
+}
 .nav-user-box{
     position: absolute;
     background-color: #fff;
@@ -75,9 +80,9 @@
     padding: 10px;
     width: 200px;
     height: 200px;
-    border-radius: 15px;
+    border-radius: 5px;
     z-index: 10;
-    right: 300px;
-    top: 80px;
-    display: none;
+    right: 0px;
+    top: 50px;
+    visibility: hidden;
 }
