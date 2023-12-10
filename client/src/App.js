@@ -8,6 +8,7 @@ import MyBooks from './pages/MyBooks'
 import BestSeller from './pages/BestSeller'
 import Setting from './pages/Setting'
 import Footer from './components/Footer';
+import BookDetail from './components/BookDetail';
 
 const App = () => {
 
@@ -45,6 +46,7 @@ const App = () => {
           <Route path='/mybooks' element={<MyBooks />} />
           <Route path='/bestseller' element={<BestSeller bestSellerData={bestSellerData} />} />
           <Route path='/setting' element={<Setting />} />
+          <Route path='/bookdetail/:isbn' element={<BookDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>

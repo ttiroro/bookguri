@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import './style/HomeNew.css'
 
 const HomeNew = ({newBookData}) => {
@@ -9,7 +8,7 @@ const HomeNew = ({newBookData}) => {
   // description 글자 수 숨기기
   function descLimit(str){
     let result = {};
-    str.length > 150 ? result = str.substr(0, 150) + '...' : result = str
+    str.length > 130 ? result = str.substr(0, 130) + '...' : result = str
     return result;
   };
 
@@ -30,7 +29,7 @@ const HomeNew = ({newBookData}) => {
       <div className='hn-list'>
           { newBookData.item &&
             newBookData.item.map((item,index)=> index < 10 && (
-            <Link className='hn-book' key={index}>
+            <Link to={`/bookdetail/${item.isbn}`} className='hn-book' key={index}>
               <div className='hn-book-cover'>
                 <img src={item.cover} alt={item.title} />
               </div>

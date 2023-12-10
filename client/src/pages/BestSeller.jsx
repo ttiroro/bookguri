@@ -1,4 +1,5 @@
 import React from 'react'
+import './style/BestSeller.css'
 
 const BestSeller = ({bestSellerData}) => {
   return (

@@ -1,6 +1,6 @@
 .home-new{
     width: 60%;
-    height: 750px;
+    height: 780px;
     margin: 20px 10px 20px 0;
     padding: 40px;
     border: 1px solid #eaf0f8;
@@ -40,9 +40,9 @@
     font-size: 20px;
 }
 .hn-list{
-    height: 530px;
+    height: 550px;
     margin: 20px 0;
-    padding: 15px;
+    padding: 15px 30px 15px 0;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -64,7 +64,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 15px 0;
+    padding-left: 20px;
+    border-left: 3px solid transparent;
+    transition: all 300ms ease-in-out;
+}
+.hn-book:hover{
+    border-color: #628ff9;
+    transform: translateX(15px);
+
 }
 .hn-book-cover{
     width: 100px;
@@ -102,5 +110,5 @@
     font-size: 10px;
     color: #999;
     float: right;
-    margin-top: 10px;
+    margin: 10px 0;
 }

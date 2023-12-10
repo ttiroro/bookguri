@@ -54,7 +54,7 @@ const HomeBest = ({bestSellerData}) => {
                 <div className='hb-list'>
                     { bestSellerData.item &&
                     bestSellerData.item.map((item, index)=> index < 6 && (
-                            <Link to="#" className='hb-book' key={index}>
+                            <Link to={`/bookdetail/${item.isbn}`} className='hb-book' key={index}>
                                 <div className='hb-book-rank'>
                                     <p className='hb-book-rankText'>{item.bestRank}</p>
                                 </div>
