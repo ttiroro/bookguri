@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { RiSettings5Fill } from "react-icons/ri";
+import { FiSearch } from "react-icons/fi";
 import './style/header.css'
 import $ from 'jquery'
 
@@ -22,8 +23,17 @@ const Header = () => {
           <ul className='nav-list' id='nav-list'>
             <li><Link to='/bookguriinfo'>소개</Link></li>
             <li><Link to='/mybooks'>내 서재</Link></li>
-            <li><Link to='/bestseller'>베스트셀러</Link></li>
+            <li><Link to='/booklist'>책 둘러보기</Link></li>
           </ul>
+
+          <div className='nav-search'>
+            <div className='nav-search-inner'>
+              <input type="text" placeholder='도서를 검색하세요' />
+              <button type='button' className='nav-search-btn'>
+                <FiSearch />  
+              </button>
+            </div>
+          </div>
 
           <div className='nav-user'>
             <img src="/images/profil.svg" alt="user" />

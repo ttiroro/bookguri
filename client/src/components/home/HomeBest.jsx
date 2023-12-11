@@ -44,7 +44,7 @@ const HomeBest = ({bestSellerData}) => {
         <div className='home-bestseller'>
             <div className='hb-left'>
                 <div className='hb-left-text'>
-                    <h2 className='hb-title'>베스트 셀러</h2>
+                    <h2 className='hb-title'>🏆 베스트 셀러</h2>
                     <p className='hb-text'>이 주의 베스트셀러를 만나보세요!</p>
                 </div>
                 <p className='hb-aladin'>도서 DB 제공 : 알라딘 인터넷서점</p>
@@ -70,7 +70,7 @@ const HomeBest = ({bestSellerData}) => {
                     }
                     <div className='hb-list-last'>
                         <button type='button' className='hb-btn'>
-                            <Link to='/bestseller'>
+                            <Link to='/booklist'>
                                 <span>더 보러가기</span> <MdKeyboardDoubleArrowRight className='arrowTwo'/>
                             </Link>
                         </button>

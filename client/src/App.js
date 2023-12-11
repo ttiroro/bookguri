@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import Scroll from './components/Scroll'
 import Header from './components/Header';
 import Home from './pages/Home'
 import BookguriInfo from './pages/BookguriInfo'
 import MyBooks from './pages/MyBooks'
-import BestSeller from './pages/BestSeller'
+import BookList from './pages/BookList'
 import Setting from './pages/Setting'
 import Footer from './components/Footer';
 import BookDetail from './components/BookDetail';
@@ -39,12 +40,13 @@ const App = () => {
   
   return (
       <BrowserRouter>
+        <Scroll />
         <Header />
         <Routes >
           <Route path='/' element={<Home bestSellerData={bestSellerData} newBookData={newBookData}/>} />
           <Route path='/bookguriinfo' element={<BookguriInfo />} />
           <Route path='/mybooks' element={<MyBooks />} />
-          <Route path='/bestseller' element={<BestSeller bestSellerData={bestSellerData} />} />
+          <Route path='/booklist' element={<BookList bestSellerData={bestSellerData} newBookData={newBookData} />} />
           <Route path='/setting' element={<Setting />} />
           <Route path='/bookdetail/:isbn' element={<BookDetail />} />
         </Routes>

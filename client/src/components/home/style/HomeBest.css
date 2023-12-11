@@ -7,8 +7,8 @@
     font-family: 'Noto Sans KR', sans-serif;
     position: relative;
     border: 1px solid #eaf0f8;
-    padding: 40px;
     border-radius: 15px;
+    padding: 40px;
     background-color: #fff;
 }
 .hb-left{
@@ -27,7 +27,7 @@
     color: #555;
 }
 .hb-title{
-    font-size: 30px;
+    font-size: 24px;
     margin: 10px 0;
 }
 .hb-aladin{
@@ -107,7 +107,7 @@
     top: 15px;
 }
 .hb-book-rankText{
-    color: #628ff9;
+    color: #555;
     font-size: 25px;
     font-weight: 600;
 }

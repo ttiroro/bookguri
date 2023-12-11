@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import './style/HomeNew.css'
 
 const HomeNew = ({newBookData}) => {
@@ -22,8 +23,8 @@ const HomeNew = ({newBookData}) => {
     <div className='home-new'>
       <div className='hn-head'>
         <div>
-          <h2 className='hn-title'>주목 할 만한 신간</h2>
-          <p className='hn-text'>알라딘에서 선정한 최신 신간 리스트를 살펴 보세요!</p>
+          <h2 className='hn-title'>📌 주목 할 만한 신간</h2>
+          <p className='hn-text'>알라딘에서 선정한 주목받는 신간 리스트를 살펴 보세요!</p>
         </div>
       </div>
       <div className='hn-list'>
@@ -43,9 +44,12 @@ const HomeNew = ({newBookData}) => {
             </Link>
             ))
           }    
-        {/* <button type='button' className='hn-btn'>
-            <Link to='/newbooks'>< MdKeyboardDoubleArrowRight  /> 더보러 가기</Link>
-        </button> */}
+
+          <button type='button' className='hn-btn'>
+              <Link to='/booklist'>
+                  <span>더 보러가기</span> <MdKeyboardDoubleArrowDown className='arrowTwo'/>
+              </Link>
+          </button>
       </div>
       <p className='hn-aladin'>도서 DB 제공 : 알라딘 인터넷서점</p>
     </div>

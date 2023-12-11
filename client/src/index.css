@@ -17,8 +17,12 @@ p{
 
 a, a:link{
   text-decoration: none;
+  color: #555;
 }
 
 ul, li{
   list-style: none;
+}
+h2{
+  margin: 0;
 }

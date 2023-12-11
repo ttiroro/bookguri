@@ -1,8 +1,9 @@
 .header{
     padding: 20px 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
 }
-.head-inner{
+.header .head-inner{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,14 +20,43 @@
 }
 
 .nav-list{
-    width: 60%;
+    width: 30%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     right: 50px;
     font-size: 18px;
     font-weight: 500;
+}
+.nav-search{
+    width: 30%;
+}
+.nav-search-inner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 350px;
+    padding: 0px 15px;
+    border-radius: 30px;
+    border: 2px solid #717ffc;
+}
+.nav-search input{
+    width: 300px;
+    padding: 10px 15px;
+    border: none;
+}
+.nav-search input:focus{
+    outline: none;
+}
+.nav-search-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.nav-search svg{
+    font-size: 20px;
+    color: #999;
 }
 .nav-list a{
     margin: 0 20px;

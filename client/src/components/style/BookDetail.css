@@ -22,7 +22,8 @@
     width: 25%;
 }
 .bd-book-inner .bd-book-cover img{
-    height: 350px;
+    max-height: 350px;
+    max-width: 250px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.08);
 }
 .bd-book-inner .bd-book-text{
