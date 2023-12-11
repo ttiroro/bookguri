@@ -71,7 +71,7 @@ const BookDetail = () => {
                     </div>
                 </div>
                 }
-                <div className='bd-sec3'>
+                {/* <div className='bd-sec3'>
                     <div className='bd-bookmark'>
                     <p className='bd-bookmark-title'>목차</p>
                     <div className='bd-bookmark-contents'>
@@ -80,7 +80,7 @@ const BookDetail = () => {
                         <p>3장. 솰라솰라</p>
                     </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='bd-sec4'>
                     <div className='bd-heart-list'>

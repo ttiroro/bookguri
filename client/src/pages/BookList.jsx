@@ -17,12 +17,12 @@ const BookList = ({bestSellerData, newBookData}) => {
     console.log(count);
     $('.bl-best-down').on('click', ()=>{
       count += 1;
-      console.log('+', count);
+      //console.log('+', count);
       if(count === 3){
         $('.bl-best-list').css('height', `${count*630}px`);
         $('.bl-best-down').hide();
         $('.bl-best-up').show();
-      } else if( count < 4){
+      } else if( count < 3){
         $('.bl-best-list').css('height', `${count*630}px`);
       }
     })
@@ -30,12 +30,12 @@ const BookList = ({bestSellerData, newBookData}) => {
     // 더보기 숨기기 
     $('.bl-best-up').on('click', ()=>{
       count -= 1;
-      console.log('-', count);
+      //console.log('-', count);
       if(count === 1){
         $('.bl-best-list').css('height', `630px`);
         $('.bl-best-up').hide();
         $('.bl-best-down').show();
-      } else if( count < 4){
+      } else if( count < 3){
         $('.bl-best-list').css('height', `${count*630}px`);
       }
     })

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link  } from 'react-router-dom';
 import { RiSettings5Fill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import './style/header.css'
@@ -11,7 +11,14 @@ const Header = () => {
     count += 1;
     count % 2 === 0 ? $('.nav-user-box').css('visibility', 'visible') : $('.nav-user-box').css('visibility', 'hidden');
   })
-  
+
+  // 검색 키워드 저장해서 넘기는 부분
+  const [searchbook, setSearchBook] = useState('');
+  const changeHandler = (e) => {
+    setSearchBook(e.target.value);
+  }
+  console.log(searchbook);
+
   return (
     <header className='header'>
       <nav className='container'>
@@ -27,12 +34,12 @@ const Header = () => {
           </ul>
 
           <div className='nav-search'>
-            <div className='nav-search-inner'>
-              <input type="text" placeholder='도서를 검색하세요' />
-              <button type='button' className='nav-search-btn'>
+            <form className='nav-search-inner' action={`/booksearch/${searchbook}`}>
+              <input type="text"  placeholder='도서를 검색하세요' onChange={changeHandler}/>
+              <button type='submit' className='nav-search-btn'>
                 <FiSearch />  
               </button>
-            </div>
+            </form>
           </div>
 
           <div className='nav-user'>

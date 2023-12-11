@@ -1,0 +1,33 @@
+.booksearch{
+    background-color: aliceblue;
+    padding: 50px 0px;
+}
+.booksearch-inner{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    border: 1px solid #eaf0f8;
+    border-radius: 15px;
+    margin: 30px 0;
+}
+.booksearch-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.booksearch-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px 20px;
+}
+.booksearch-book-cover{
+    width: 15%;
+}
+.booksearch-book-info{
+    width: 60%;
+}

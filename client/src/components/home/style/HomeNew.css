@@ -132,6 +132,6 @@
     transition: all 300ms ease-in-out;
 }
 .hn-btn a:hover{
-    transform: translateY(20px);
+    transform: translateY(10px);
     color: #628ff9;
 }

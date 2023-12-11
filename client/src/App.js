@@ -10,6 +10,7 @@ import BookList from './pages/BookList'
 import Setting from './pages/Setting'
 import Footer from './components/Footer';
 import BookDetail from './components/BookDetail';
+import BookSearch from './pages/BookSearch';
 
 const App = () => {
 
@@ -49,6 +50,7 @@ const App = () => {
           <Route path='/booklist' element={<BookList bestSellerData={bestSellerData} newBookData={newBookData} />} />
           <Route path='/setting' element={<Setting />} />
           <Route path='/bookdetail/:isbn' element={<BookDetail />} />
+          <Route path='/booksearch/:searchword' element={<BookSearch />} />
         </Routes>
         <Footer />
       </BrowserRouter>
