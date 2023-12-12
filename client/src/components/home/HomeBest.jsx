@@ -19,23 +19,23 @@ const HomeBest = ({bestSellerData}) => {
     // 슬라이더 만들기
     let current = 0;
     $('.hb-next').on('click', ()=>{
-        current -= 270;
+        current -= 280;
         console.log('next', current);
-        if(-1080 <= current){
+        if(-1120 <= current){
             $('.hb-list').css('transform', `translateX(${current}px)`)
-        } else if(current < -1080) {
-            current = -1080;
+        } else if(current < -1120) {
+            current = -1120;
             $('.hb-list').css('transform', `translateX(-1080px)`)
         }
     })
 
     $('.hb-back').on('click', ()=>{
-        current += 270;
+        current += 280;
         //console.log('back', current);
         if(current <= 0){
             $('.hb-list').css('transform', `translateX(${current}px)`)
         } else if(0 < current) {
-            current = -270;
+            current = -280;
             $('.hb-list').css('transform', `translateX(0px)`)
         }
     })

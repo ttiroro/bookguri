@@ -29,7 +29,7 @@ const HomeNew = ({newBookData}) => {
       </div>
       <div className='hn-list'>
           { newBookData.item &&
-            newBookData.item.map((item,index)=> index < 10 && (
+            newBookData.item.map((item,index)=> index < 5 && (
             <Link to={`/bookdetail/${item.isbn}`} className='hn-book' key={index}>
               <div className='hn-book-cover'>
                 <img src={item.cover} alt={item.title} />

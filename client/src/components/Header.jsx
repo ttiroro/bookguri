@@ -30,7 +30,7 @@ const Header = () => {
           <ul className='nav-list' id='nav-list'>
             <li><Link to='/bookguriinfo'>소개</Link></li>
             <li><Link to='/mybooks'>내 서재</Link></li>
-            <li><Link to='/booklist'>책 둘러보기</Link></li>
+            <li><Link to='/booklist'>책 구경</Link></li>
           </ul>
 
           <div className='nav-search'>

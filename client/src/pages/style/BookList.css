@@ -108,9 +108,32 @@
     color: #717ffc;
     font-weight: 800;
     border: none;
-    font-size: 20px;
+    font-size: 28px;
     cursor: pointer;
 }
 .bl-best-up{
     display:none;
+    background-color: transparent;
+    color: #717ffc;
+    font-weight: 800;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+.bl-new-down{
+    background-color: transparent;
+    color: #717ffc;
+    font-weight: 800;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+.bl-new-up{
+    display:none;
+    background-color: transparent;
+    color: #717ffc;
+    font-weight: 800;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
 }

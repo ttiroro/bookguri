@@ -17,12 +17,13 @@ const BookSearch = () => {
         }
         fetchdata();
     }, [searchword]);
-    console.log(searchBookData.item);
+    //console.log(searchBookData.item);
+
     return (
         <div className='booksearch'>
             <div className='container'>
                 <div className='booksearch-inner'>
-                    <h2 className='booksearch-head'>💡'{searchword}'의 검색 결과</h2>
+                    <h2 className='booksearch-head'>💡 '{searchword}'의 검색 결과</h2>
                     <div className='booksearch-list'>
                         {
                             searchBookData.item && searchBookData.item.map((item, index)=>(
