@@ -3,7 +3,9 @@ import React from 'react'
 const Mybooks = () => {
   return (
     <div>
-      서재
+      <h2>사용자 정보</h2>
+      <p>user 이름</p>
+
     </div>
   )
 }

@@ -67,11 +67,13 @@
 }
 .nav-user{
     position: relative;
+    width: 15%;
 }
 .nav-user,
 .nav-user-info{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     background-color: transparent;
     border: none;

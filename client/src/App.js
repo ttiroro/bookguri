@@ -11,11 +11,19 @@ import Setting from './pages/Setting'
 import Footer from './components/Footer';
 import BookDetail from './components/BookDetail';
 import BookSearch from './pages/BookSearch';
+import Login from './pages/Login';
 
 const App = () => {
 
   const [bestSellerData, setBestSellerData] = useState([]);
   const [newBookData, setNewBookData] = useState([]);
+
+  //server 연동
+  useEffect(()=>{
+    fetch("http://localhost:8080/api")
+      .then(res => res.json())
+      .then(data => console.log(data));
+  });
 
   // 베스트셀러
   useEffect(() => {
@@ -51,6 +59,7 @@ const App = () => {
           <Route path='/setting' element={<Setting />} />
           <Route path='/bookdetail/:isbn' element={<BookDetail />} />
           <Route path='/booksearch/:searchword' element={<BookSearch />} />
+          <Route path='login' element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

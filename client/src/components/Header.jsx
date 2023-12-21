@@ -43,7 +43,8 @@ const Header = () => {
           </div>
 
           <div className='nav-user'>
-            <img src="/images/profil.svg" alt="user" />
+            <Link to='/login'>login</Link>
+            {/* <img src="/images/profil.svg" alt="user" />
             <button type='button' className='nav-user-info'>
               <p>user 님</p>
             </button>
@@ -56,7 +57,7 @@ const Header = () => {
               <Link to='/setting'>
                 <RiSettings5Fill className='nav-settings'/>
               </Link>
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>
