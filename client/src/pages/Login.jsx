@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 const Login = () => {
+    const [userId, setUserId] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+
+    const onSubmit = async (e) =>{
+        e.preventDefault();
+        await axios.post('http://localhost:8080/login', {
+            userId : userId,
+            userPassword : userPassword
+        })
+        .then(async(res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    };
     return (
-        <form action='/login' method='post'>
-            <h2>책거리에 오신걸 환영합니다!</h2>
-            <input name='userId' type='text' placeholder='아이디를 입력하세요' />
-            <input name='userPassword' type='password' placeholder='비밀번호를 입력하세요'/>
-            <button type='submit'>회원가입</button>
+        <form method='post' onSubmit={onSubmit}>
+            <h2>로그인</h2>
+            <input onChange={(e)=>{ setUserId(e.target.value)}} type='text' placeholder='아이디를 입력하세요' />
+            <input onChange={(e)=>{ setUserPassword(e.target.value)}} type='password' placeholder='비밀번호를 입력하세요'/>
+            <button type='submit'>로그인하기</button>
         </form>
     )
 }
