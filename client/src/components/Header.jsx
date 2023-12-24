@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link  } from 'react-router-dom';
-import { RiSettings5Fill } from "react-icons/ri";
+// import { RiSettings5Fill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import './style/header.css'
 import $ from 'jquery'
