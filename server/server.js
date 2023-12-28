@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const { MongoClient } = require('mongodb')
-const bcrypt = require('bcrypt') // 세팅 코드
-const MongoStore = require('connect-mongo') //세팅 코드
+const { ObjectId } = require('mongodb')
+const bcrypt = require('bcrypt') 
 require('dotenv').config()
 
 app.use(express.json());
@@ -14,11 +14,12 @@ app.use(cors());
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const MongoStore = require('connect-mongo')
 
 app.use(passport.initialize())
 app.use(session({
-    secret: process.env.PASSPORT_SECRET,
-    resave : false,
+    secret: process.env.PASSPORT_SECRET, // 개인정보를 보호하기 위한 패스워드
+    resave : false, // 유저가 서버로 요청할때마다 세션 갱신 여부
     saveUninitialized : false,
     cookie : {maxAge : 60 * 60 * 1000}, //1시간 세션 유지
     store : MongoStore.create({
@@ -45,11 +46,11 @@ MongoClient.connect(url).then((client)=>{
 app.use(express.static(path.join(__dirname, '../client/public')));
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
-    console.log(req.user)
 });
 
 //회원가입 정보 저장
-app.post('/register', async (req, res)=>{ let hash = await bcrypt.hash(req.body.password, 10)
+app.post('/register', async (req, res)=>{
+    let hash = await bcrypt.hash(req.body.password, 10)
     try{
         if(res.body.username == '' || req.body.password == ''){
             res.send('아이디 혹은 비밀번호를 입력하세요')
@@ -66,26 +67,28 @@ app.post('/register', async (req, res)=>{ let hash = await bcrypt.hash(req.body.
         res.status(500).send('서버에러남')
     }
 })
-//로그인
-passport.use(new LocalStrategy(async (inputId, inputPassword, cb) => {
-    let result = await db.collection('user').findOne({ username : inputId})
-    if (!result) {
-    return cb(null, false, { message: '아이디 DB에 없음' })
-    }
-    if (await bcrypt.compare(inputPassword, result.password)) {
-    return cb(null, result)
-    } else {
-    return cb(null, false, { message: '비번불일치' });
-    }
-}))
 
-// 세션 만드는 코드
-passport.serializeUser((user, done)=> {
-    console.log(user)
-    process.nextTick(()=>{
-        done(null, {id : user._id, username : user.username})
+//로그인 기능
+    // 제출한 아이디/ 비번 검사하는 코드
+    passport.use(new LocalStrategy(async (inputId, inputPassword, cb) => {
+        let result = await db.collection('user').findOne({ username : inputId})
+        if (!result) {
+        return cb(null, false, { message: '아이디 DB에 없음' })
+        }
+        if (await bcrypt.compare(inputPassword, result.password)) {
+        return cb(null, result)
+        } else {
+        return cb(null, false, { message: '비번불일치' });
+        }
+    }))
+
+    // 세션 만드는 코드
+    passport.serializeUser((user, done)=> {
+        process.nextTick(()=>{
+            done(null, {id : user._id, username : user.username})
+        })
     })
-})
+
 // 세션 쿠키 분석
 passport.deserializeUser(async (user, done)=> {
     let result = await db.collection('user').findOne({_id: new ObjectId(user.id)})
@@ -97,17 +100,14 @@ passport.deserializeUser(async (user, done)=> {
 
 app.post('/login', async(req, res, next)=>{
     passport.authenticate('local', (error, user, info)=> {
-        if(error) return req.status(500).json(error)
-        if(!user) return req.status(401).json(info.message)
-        res.logIn(user, (err)=>{
+        if(error) return res.status(500).json(error)
+        if(!user) return res.status(401).json(info.message)
+        req.logIn(user, (err)=>{
             if(err) return next(err)
             res.redirect('/')
         })// 실행하면 세션만들기 실행
     })(req, res, next)
 })
-
-app.get('/mybooks')
-
 //제일 하단에 놓기
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
