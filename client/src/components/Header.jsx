@@ -44,7 +44,6 @@ const Header = () => {
 
           <div className='nav-user'>
             <Link to='/login'>로그인</Link>
-            <Link to='/register'>가입하기</Link>
             {/* <img src="/images/profil.svg" alt="user" />
             <button type='button' className='nav-user-info'>
               <p>user 님</p>

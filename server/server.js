@@ -51,17 +51,19 @@ app.get('/', function (req, res) {
 //회원가입 정보 저장
 app.post('/register', async (req, res)=>{
     let hash = await bcrypt.hash(req.body.password, 10)
+    console.log(req.body)
     try{
-        if(res.body.username == '' || req.body.password == ''){
+        if(req.body.username == '' || req.body.password == ''){
             res.send('아이디 혹은 비밀번호를 입력하세요')
         } else if( await db.collection('user').findOne({ username : req.body.username})){
             res.send('이미 사용중인 아이디 입니다.')
         } else {
             await db.collection('user').insertOne({
                 username : req.body.username, 
-                password: hash
+                password: hash,
+                subname : req.body.subname
             });
-            res.redirect('/')
+            res.send('회원가입을 축하합니다')
         }
     } catch(e){
         res.status(500).send('서버에러남')
@@ -107,6 +109,13 @@ app.post('/login', async(req, res, next)=>{
             res.redirect('/')
         })// 실행하면 세션만들기 실행
     })(req, res, next)
+})
+
+app.get('/mybooks', async (req, res) =>{
+    let result = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
+    delete result.password //  비밀번호 항목은 삭제후 반영
+    res.json(result)
+    console.log(req.user.username, '현재 로그인 중인 사용자')
 })
 //제일 하단에 놓기
 app.get('*', function (req, res) {

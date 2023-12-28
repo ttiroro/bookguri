@@ -1,11 +1,23 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const Mybooks = () => {
 
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    async function fetchdata() {
+    const API_URL = '/mybooks';
+    const { data } = await axios.get(API_URL);
+    setUserData(data);
+    }
+    fetchdata();
+  },[]);
+  console.log(userData);
+
   return (
     <div>
-      <h2>사용자 정보</h2>
-      <p>user 이름</p>
+      <h2>{userData.subname}({userData.username}) 님의 서재입니다</h2>
     </div>
   )
 }
