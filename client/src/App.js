@@ -15,6 +15,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 
 const App = () => {
+  axios.defaults.withCredentials = true;
 
   const [bestSellerData, setBestSellerData] = useState([]);
   const [newBookData, setNewBookData] = useState([]);
