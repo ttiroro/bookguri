@@ -4,10 +4,12 @@ import axios from 'axios';
 import './style/BookDetail.css';
 import { AiFillHeart } from 'react-icons/ai';
 
-const BookDetail = () => {
+const BookDetail = ({userData}) => {
 
     let {isbn} = useParams();
     const [bookData, setBookData] = useState({});
+    const [bookIsbn, setBookIsbn] = useState("");
+
     useEffect(() => {
         async function fetchdata() {
         const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
@@ -24,41 +26,57 @@ const BookDetail = () => {
         return price;
     }
 
+    const onSubmit = async (e) =>{
+        e.preventDefault();
+        await axios.post('/bookdetail', {
+            book : bookIsbn
+        })
+        .then(async(res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <div className='book-detail'>
             <div className='bd-sec1'>
 
-                { bookData.item && 
-                <div className='container bd-book-box'>
-                    <p className='bd-book-title'>{bookData.item[0].title}</p>
+            { bookData.item && 
+            <div className='container bd-book-box'>
+                <p className='bd-book-title'>{bookData.item[0].title}</p>
 
-                    <div className='bd-book-inner'>
-                        <div className='bd-book-cover'>
-                            <img src={bookData.item[0].cover} alt="cover"/>
+                <div className='bd-book-inner'>
+                    <div className='bd-book-cover'>
+                        <img src={bookData.item[0].cover} alt="cover"/>
+                    </div>
+
+                    <div className='bd-book-text' >
+                        <p className='bd-book-writer'>지은이 | {bookData.item[0].author}</p>
+                        <p className='bd-book-publisher'>출판사 | {bookData.item[0].publisher}</p>
+                        <p className='bd-book-date'>출판일  |  {bookData.item[0].pubDate}</p>
+                        <p className='bd-book-page'>페이지  |  {bookData.item[0].subInfo.itemPage} p</p>
+                        <p className='bd-book-isbn'>ISBN  |  {bookData.item[0].isbn13}</p>
+                        <div className='bd-book-category'>
+                        <p>주제분류  |  {bookData.item[0].categoryName}</p>
                         </div>
-
-                        <div className='bd-book-text'>
-                            <p className='bd-book-writer'>지은이 | {bookData.item[0].author}</p>
-                            <p className='bd-book-publisher'>출판사 | {bookData.item[0].publisher}</p>
-                            <p className='bd-book-date'>출판일  |  {bookData.item[0].pubDate}</p>
-                            <p className='bd-book-page'>페이지  |  {bookData.item[0].subInfo.itemPage} p</p>
-                            <p className='bd-book-isbn'>ISBN  |  {bookData.item[0].isbn13}</p>
-                            <div className='bd-book-category'>
-                            <p>주제분류  |  {bookData.item[0].categoryName}</p>
-                            </div>
-                            <p className='bd-book-rank'>리뷰 평점 | {bookData.item[0].customerReviewRank}점</p>
-                            <div className='bd-book-price'>
-                                <p>판매가 | {dotPrice(bookData.item[0].priceSales)}원</p>
-                                <div className='bd-book-btn'>
-                                    <a href={bookData.item[0].link}>구매하러 가기</a>
-                                    <a href="!#">내 서재에 담기</a>
-                                    <a href="!#"><AiFillHeart /></a>
-                                </div>
+                        <p className='bd-book-rank'>리뷰 평점 | {bookData.item[0].customerReviewRank}점</p>
+                        <div className='bd-book-price'>
+                            <p>판매가 | {dotPrice(bookData.item[0].priceSales)}원</p>
+                            <div className='bd-book-btn'>
+                                <a href={bookData.item[0].link}>구매하러 가기</a>
+                                <form method='post' onSubmit={onSubmit}>
+                                    <input type="text" value={bookData.item[0].isbn13} onChange={(e)=>{ setBookIsbn(e.target.value)}} />
+                                    <button type='submit'>내 서재에 담기</button>
+                                </form>
+                                <a href="!#"><AiFillHeart /></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                }
+            </div>
+            }
 
             </div>
 
@@ -71,16 +89,6 @@ const BookDetail = () => {
                     </div>
                 </div>
                 }
-                {/* <div className='bd-sec3'>
-                    <div className='bd-bookmark'>
-                    <p className='bd-bookmark-title'>목차</p>
-                    <div className='bd-bookmark-contents'>
-                        <p>1장. 작가의 말</p>
-                        <p>2장. 블라블라</p>
-                        <p>3장. 솰라솰라</p>
-                    </div>
-                    </div>
-                </div> */}
 
                 <div className='bd-sec4'>
                     <div className='bd-heart-list'>

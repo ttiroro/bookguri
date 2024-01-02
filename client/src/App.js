@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import axios from 'axios'
 import Scroll from './components/Scroll'
 import Header from './components/Header';
 import Home from './pages/Home'
@@ -41,18 +41,30 @@ const App = () => {
     fetchdata();
   },[]);
   //console.log(newBookData);
-  
+
+
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    async function fetchdata() {
+    const API_URL = '/mybooks';
+    const { data } = await axios.get(API_URL);
+    setUserData(data);
+    }
+    fetchdata();
+  },[]);
+  //console.log(userData);
   return (
       <BrowserRouter>
         <Scroll />
-        <Header />
+        <Header userData={userData}/>
         <Routes >
           <Route path='/' element={<Home bestSellerData={bestSellerData} newBookData={newBookData}/>} />
           <Route path='/bookguriinfo' element={<BookguriInfo />} />
-          <Route path='/mybooks' element={<MyBooks />} />
+          <Route path='/mybooks' element={<MyBooks userData={userData}/>} />
           <Route path='/booklist' element={<BookList bestSellerData={bestSellerData} newBookData={newBookData} />} />
           <Route path='/setting' element={<Setting />} />
-          <Route path='/bookdetail/:isbn' element={<BookDetail />} />
+          <Route path='/bookdetail/:isbn' element={<BookDetail userData={userData}/>} />
           <Route path='/booksearch/:searchword' element={<BookSearch />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />

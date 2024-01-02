@@ -8,11 +8,13 @@
         "fetchdata",
         "mybooks",
         "profil",
+        "readbooks",
         "resave",
         "searchbook",
         "searchword",
         "subname",
         "ttbdltjswjd",
-        "ttbkey"
+        "ttbkey",
+        "userbooks"
     ]
 }

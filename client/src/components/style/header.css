@@ -70,6 +70,7 @@
     width: 15%;
 }
 .nav-user,
+.nav-user-in,
 .nav-user-info{
     display: flex;
     flex-direction: row;
@@ -87,8 +88,8 @@
 }
 .nav-user p{
     margin-left: 10px;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .nav-btn{
     background-color: transparent;

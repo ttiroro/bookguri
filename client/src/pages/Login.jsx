@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import './style/Login.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom'
 
 const Login = () => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
-    
-    const navigate = useNavigate();
 
     const onSubmit = async (e) =>{
         e.preventDefault();
@@ -17,8 +14,7 @@ const Login = () => {
             password : password
         })
         .then(async(res)=>{
-            console.log(res)
-            navigate('/mybooks')
+            window.location.href = '/';
         })
         .catch((err)=>{
             console.log(err)

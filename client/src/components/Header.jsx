@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link  } from 'react-router-dom';
-// import { RiSettings5Fill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
+import {RiSettings5Fill} from "react-icons/ri"
 import './style/header.css'
 import $ from 'jquery'
 
-const Header = () => {
+const Header = ({userData}) => {
   let count = 1;
   $('.nav-user-info').on('click', ()=>{
     count += 1;
@@ -43,21 +43,28 @@ const Header = () => {
           </div>
 
           <div className='nav-user'>
-            <Link to='/login'>로그인</Link>
-            {/* <img src="/images/profil.svg" alt="user" />
-            <button type='button' className='nav-user-info'>
-              <p>user 님</p>
-            </button>
-            <div className='nav-user-box'>
-              <p>user name</p>
-              <p>읽은 책 수</p>
-              <p>로그아웃</p>
-            </div>
-            <button type='button' id='nav-btn' className='nav-btn'>
-              <Link to='/setting'>
-                <RiSettings5Fill className='nav-settings'/>
-              </Link>
-            </button> */}
+            {
+              !userData.username ? 
+              <Link to='/login'>로그인</Link>  
+              : 
+                <div className='nav-user-in'>
+                  <img src="/images/profil.svg" alt="user" />
+                  <button type='button' className='nav-user-info'>
+                    <p>{userData.subname}님</p>
+                  </button>
+                  <div className='nav-user-box'>
+                    <p>{userData.subname}({userData.username})</p>
+                    <p>읽은 책 수</p>
+                    <p>로그아웃</p>
+                  </div>
+                  <button type='button' id='nav-btn' className='nav-btn'>
+                    <Link to='/setting'>
+                      <RiSettings5Fill className='nav-settings'/>
+                    </Link>
+                  </button>
+                </div>
+                
+            }
           </div>
         </div>
       </nav>

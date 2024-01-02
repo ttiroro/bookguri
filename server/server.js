@@ -112,11 +112,25 @@ app.post('/login', async(req, res, next)=>{
 })
 
 app.get('/mybooks', async (req, res) =>{
-    let result = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
-    delete result.password //  비밀번호 항목은 삭제후 반영
-    res.json(result)
-    console.log(req.user.username, '현재 로그인 중인 사용자')
+    if(!req.user){
+        res.send('login')
+    } else {
+        let result = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
+        delete result.password //  비밀번호 항목은 삭제후 반영
+        res.json(result)
+        console.log(req.user.username, ': 현재 로그인 중인 사용자')
+    }
 })
+
+
+app.post('/bookdetail', async (req, res)=>{
+    console.log(req.body)
+    await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
+        $set : { readbooks : req.body.bookIsbn }
+    });
+    res.send('책을 서재에 담았습니다')
+})
+
 //제일 하단에 놓기
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
