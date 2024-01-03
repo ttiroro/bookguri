@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link  } from 'react-router-dom';
+import axios from 'axios';
 import './style/MyBooks.css'
 
 const Mybooks = ({userData}) => {
 
   return (
     <div className='container mybooks'>
-      {
+      {/* {
         !userData.username 
         ? 
           <div className='mb-login'>
@@ -17,11 +18,21 @@ const Mybooks = ({userData}) => {
           </div>
         : 
           <h2>{userData.subname}({userData.username}) 님의 서재입니다</h2>
-      }
-      {/* <section className='sec01'>
+      } */}
+      <section className='sec01'>
         <p>{userData.subname}님의 서재</p>
-        <div></div>
-      </section> */}
+
+        <div>
+          <img src="" alt="" />
+        </div>
+        <div>
+          { userData.readbooks && 
+            userData.readbooks.map((item, index)=>{
+              
+            })  
+          }
+        </div>
+      </section>
     </div>
   )
 }

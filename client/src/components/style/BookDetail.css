@@ -58,18 +58,27 @@
 }
 .bd-book-inner .bd-book-text .bd-book-price .bd-book-btn{
     margin-left: 30px;
+    display: flex;
+    flex-direction: row;
 }
-.bd-book-inner .bd-book-text .bd-book-price .bd-book-btn a{
+.bd-book-inner .bd-book-text .bd-book-price .bd-book-btn a,
+.bd-book-inner .bd-book-text .bd-book-price .bd-book-btn button{
     border-radius: 10px;
+    border: none;
     background-color: #6e8ff9;
     color: #fff;
     text-align: center;
     line-height: 40px;
-    padding: 10px 20px;
+    padding: 3px 20px;
     margin-right: 10px;
     transition: all 200ms ease;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
-.bd-sec1 .container .bd-book-price .bd-book-btn a:hover{
+
+.bd-sec1 .container .bd-book-price .bd-book-btn a:hover,
+.bd-book-inner .bd-book-text .bd-book-price .bd-book-btn button:hover{
     background-color: #4E64AB;
 }
 

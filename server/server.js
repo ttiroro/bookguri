@@ -125,10 +125,19 @@ app.get('/mybooks', async (req, res) =>{
 
 app.post('/bookdetail', async (req, res)=>{
     console.log(req.body)
-    await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
-        $set : { readbooks : req.body.bookIsbn }
-    });
-    res.send('책을 서재에 담았습니다')
+    let result = await db.collection('user').findOne({ readbooks : req.body.book})
+    try{
+        if(!result){
+            await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
+                $push : { readbooks : req.body.book }
+            });
+            res.send("<script>alert('책을 서재에 담았습니다');</script>");
+        } else {
+            res.send("<script>alert('이미 서재에 담긴 책입니다.');</script>");
+        }
+    } catch(err){
+        console.log(err)
+    }
 })
 
 //제일 하단에 놓기

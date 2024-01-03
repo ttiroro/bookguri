@@ -8,7 +8,7 @@ const BookDetail = ({userData}) => {
 
     let {isbn} = useParams();
     const [bookData, setBookData] = useState({});
-    const [bookIsbn, setBookIsbn] = useState("");
+    const [bookIsbn, setBookIsbn] = useState('');
 
     useEffect(() => {
         async function fetchdata() {
@@ -32,13 +32,16 @@ const BookDetail = ({userData}) => {
             book : bookIsbn
         })
         .then(async(res)=>{
-            console.log(res)
+            console.log(res.config.data)
         })
         .catch((err)=>{
             console.log(err)
         })
     }
 
+    const onClick = () =>{
+        setBookIsbn(bookData.item[0].isbn13)
+    }
     return (
         <div className='book-detail'>
             <div className='bd-sec1'>
@@ -67,8 +70,7 @@ const BookDetail = ({userData}) => {
                             <div className='bd-book-btn'>
                                 <a href={bookData.item[0].link}>구매하러 가기</a>
                                 <form method='post' onSubmit={onSubmit}>
-                                    <input type="text" value={bookData.item[0].isbn13} onChange={(e)=>{ setBookIsbn(e.target.value)}} />
-                                    <button type='submit'>내 서재에 담기</button>
+                                    <button type='submit' onClick={onClick}>내 서재에 담기</button>
                                 </form>
                                 <a href="!#"><AiFillHeart /></a>
                             </div>
