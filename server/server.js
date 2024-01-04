@@ -44,12 +44,12 @@ MongoClient.connect(url).then((client)=>{
 })
 
 app.use(express.static(path.join(__dirname, '../client/public')));
-app.get('/', function (req, res) {
+app.get('/api', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
 //회원가입 정보 저장
-app.post('/register', async (req, res)=>{
+app.post('/api/register', async (req, res)=>{
     let hash = await bcrypt.hash(req.body.password, 10)
     console.log(req.body)
     try{
@@ -100,7 +100,7 @@ passport.deserializeUser(async (user, done)=> {
     })
 })
 
-app.post('/login', async(req, res, next)=>{
+app.post('/api/login', async(req, res, next)=>{
     passport.authenticate('local', (error, user, info)=> {
         if(error) return res.status(500).json(error)
         if(!user) return res.status(401).json(info.message)
@@ -111,19 +111,24 @@ app.post('/login', async(req, res, next)=>{
     })(req, res, next)
 })
 
-app.get('/mybooks', async (req, res) =>{
+app.get('/api/mybooks', async (req, res) =>{
     if(!req.user){
         res.send('login')
     } else {
-        let result = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
-        delete result.password //  비밀번호 항목은 삭제후 반영
-        res.json(result)
+        let userData = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
+        delete userData.password //  비밀번호 항목은 삭제후 반영
+
+        let userReadbookInfo = await db.collection('bookdata').find({
+            bookIsbn :  req.user.readbooks 
+        })
+        res.json({'userInfo' : userData, userReadbookInfo})
+
         console.log(req.user.username, ': 현재 로그인 중인 사용자')
     }
 })
 
 
-app.post('/bookdetail', async (req, res)=>{
+app.post('/api/bookdetail', async (req, res)=>{
     console.log(req.body)
     let result = await db.collection('user').findOne({ readbooks : req.body.book})
     try{
@@ -131,6 +136,12 @@ app.post('/bookdetail', async (req, res)=>{
             await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
                 $push : { readbooks : req.body.book }
             });
+            await db.collection('bookdata').insertOne({
+                bookIsbn : req.body.book,
+                bookTitle : req.body.bookTitle,
+                bookCover : req.body.bookCover,
+                bookAuthor : req.body.bookAuthor
+            })
             res.send("<script>alert('책을 서재에 담았습니다');</script>");
         } else {
             res.send("<script>alert('이미 서재에 담긴 책입니다.');</script>");
@@ -139,6 +150,7 @@ app.post('/bookdetail', async (req, res)=>{
         console.log(err)
     }
 })
+
 
 //제일 하단에 놓기
 app.get('*', function (req, res) {

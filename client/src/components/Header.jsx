@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import { Link  } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import {RiSettings5Fill} from "react-icons/ri"
@@ -6,6 +7,8 @@ import './style/header.css'
 import $ from 'jquery'
 
 const Header = ({userData}) => {
+
+  console.log(userData)
   let count = 1;
   $('.nav-user-info').on('click', ()=>{
     count += 1;
@@ -43,17 +46,18 @@ const Header = ({userData}) => {
           </div>
 
           <div className='nav-user'>
-            {
-              !userData.username ? 
-              <Link to='/login'>로그인</Link>  
-              : 
+            { 
+              !userData
+              ?  
+              <Link to='/login'>로그인</Link> 
+              :
                 <div className='nav-user-in'>
                   <img src="/images/profil.svg" alt="user" />
                   <button type='button' className='nav-user-info'>
-                    <p>{userData.subname}님</p>
+                    <p>{userData}</p>
                   </button>
                   <div className='nav-user-box'>
-                    <p>{userData.subname}({userData.username})</p>
+                    <p></p>
                     <p>읽은 책 수</p>
                     <p>로그아웃</p>
                   </div>

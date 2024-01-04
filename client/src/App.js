@@ -47,7 +47,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchdata() {
-    const API_URL = '/mybooks';
+    const API_URL = '/api/mybooks';
     const { data } = await axios.get(API_URL);
     setUserData(data);
     }

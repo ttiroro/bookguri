@@ -8,7 +8,10 @@ const BookDetail = ({userData}) => {
 
     let {isbn} = useParams();
     const [bookData, setBookData] = useState({});
-    const [bookIsbn, setBookIsbn] = useState('');
+    const [myBookIsbn, setMyBookIsbn] = useState('');
+    const [myBookTitle, setMyBookTitle] = useState('');
+    const [myBookCover, setMyBookCover] = useState('');
+    const [myBookAuthor, setMyBookAuthor] = useState('');
 
     useEffect(() => {
         async function fetchdata() {
@@ -29,7 +32,10 @@ const BookDetail = ({userData}) => {
     const onSubmit = async (e) =>{
         e.preventDefault();
         await axios.post('/bookdetail', {
-            book : bookIsbn
+            book : myBookIsbn,
+            bookTitle : myBookTitle,
+            bookCover : myBookCover,
+            bookAuthor : myBookAuthor
         })
         .then(async(res)=>{
             console.log(res.config.data)
@@ -40,7 +46,10 @@ const BookDetail = ({userData}) => {
     }
 
     const onClick = () =>{
-        setBookIsbn(bookData.item[0].isbn13)
+        setMyBookIsbn(bookData.item[0].isbn13)
+        setMyBookTitle(bookData.item[0].title)
+        setMyBookCover(bookData.item[0].cover)
+        setMyBookAuthor(bookData.item[0].author)
     }
     return (
         <div className='book-detail'>
