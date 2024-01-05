@@ -8,7 +8,6 @@ import $ from 'jquery'
 
 const Header = ({userData}) => {
 
-  console.log(userData)
   let count = 1;
   $('.nav-user-info').on('click', ()=>{
     count += 1;
@@ -47,14 +46,14 @@ const Header = ({userData}) => {
 
           <div className='nav-user'>
             { 
-              !userData
+              !userData.username
               ?  
               <Link to='/login'>로그인</Link> 
               :
                 <div className='nav-user-in'>
                   <img src="/images/profil.svg" alt="user" />
                   <button type='button' className='nav-user-info'>
-                    <p>{userData}</p>
+                    <p>{userData.subname}님</p>
                   </button>
                   <div className='nav-user-box'>
                     <p></p>

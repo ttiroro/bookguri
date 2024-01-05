@@ -2,15 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './style/MyBooks.css'
 
-const Mybooks = ({userData, userReadbookInfo}) => {
-
-  console.log(userData)
+const Mybooks = ({userData}) => {
 
   return (
     <div className='container mybooks'>
       <section className='sec01'>
         {
-          !userData 
+          !userData.username
           ?
             <div className='mb-login'>
               <p className='mb-login-text'>로그인이 필요한 서비스입니다.</p>
@@ -19,7 +17,7 @@ const Mybooks = ({userData, userReadbookInfo}) => {
               </Link>
             </div>
           : 
-            <p>{userData.userInfo.subname}님의 서재</p>
+            <p>{userData.subname}님의 서재</p>
         }
 
         <div>

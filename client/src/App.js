@@ -47,13 +47,14 @@ const App = () => {
 
   useEffect(() => {
     async function fetchdata() {
-    const API_URL = '/api/mybooks';
+    const API_URL = '/mybooks';
     const { data } = await axios.get(API_URL);
     setUserData(data);
     }
     fetchdata();
   },[]);
-  //console.log(userData);
+  console.log(userData);
+  
   return (
       <BrowserRouter>
         <Scroll />
