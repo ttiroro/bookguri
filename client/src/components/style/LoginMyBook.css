@@ -1,0 +1,124 @@
+.mybooks{
+    background-color: aliceblue;
+}
+.mb-title{
+    color: #333;
+    padding: 30px 0;
+}
+.mb-sec01{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 380px;
+}
+.mb-sec01 .mb-userprofile{
+    width: 60%;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #eaf0f8;
+    margin-right:10px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: inherit;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userinfo{
+    width: 40%;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userimg{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userimg img{
+    height: 120px;
+    margin-bottom: 10px;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userimg p{
+    font-size: 16px;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userinfo .mb-userprofile-text{
+    color: #333;
+    font-size: 16px;
+    margin-left: 20px;
+}
+.mb-sec01 .mb-userprofile .mb-userprofile-userinfo .mb-userprofile-text p{
+    margin: 5px 0;
+}
+
+.mb-sec01 .mb-userprofile .mb-userprofile-category{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mb-sec01 .mb-userprofile .mb-userprofile-category h4{
+    margin: 10px 0;
+}
+
+
+
+
+
+.mb-sec01 .mb-calendar{
+    width: 40%;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #eaf0f8;
+    margin-left: 10px;
+    padding: 40px;
+    height: inherit;
+}
+
+
+.mb-sec02{
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #eaf0f8;
+    margin: 30px 0;
+    padding: 40px;
+    height: fit-content;
+}
+
+.mb-booklist{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.mb-bookbox{
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.mb-book-cover{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.mb-book-cover img{
+    width: 150px;
+    max-height: 330px;
+}
+.mb-book-text{
+    height: 20%;
+}
+.mb-book-text p:first-child{
+    font-size: 16px;
+    font-weight: 500;
+}
+.mb-book-text p:nth-child(2){
+    font-size: 14px;
+    font-weight: 400;
+}

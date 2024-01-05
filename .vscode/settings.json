@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "bookbox",
         "bookdata",
         "bookdetail",
         "Bookguri",
@@ -17,6 +18,9 @@
         "subname",
         "ttbdltjswjd",
         "ttbkey",
-        "userbooks"
+        "userbooks",
+        "userimg",
+        "userinfo",
+        "userprofile"
     ]
 }

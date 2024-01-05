@@ -1,14 +1,14 @@
-.mb-login{
+.guest-login{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 250px auto;
 }
-.mb-login-text{
+.guest-login-text{
     font-size: 30px;
     color: #666;
 }
-.mb-login-btn{
+.guest-login-btn{
     background-color: #fff;
     color: #628ff9;
     padding: 15px 40px;
@@ -17,7 +17,7 @@
     margin: 50px 0;
     transition: all 100ms ease-in-out;
 }
-.mb-login-btn:hover{
+.guest-login-btn:hover{
     background-color: #628ff9;
     color: #fff;
 }

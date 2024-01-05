@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 import { Link  } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import {RiSettings5Fill} from "react-icons/ri"
@@ -7,6 +6,8 @@ import './style/header.css'
 import $ from 'jquery'
 
 const Header = ({userData}) => {
+
+  console.log(userData)
 
   let count = 1;
   $('.nav-user-info').on('click', ()=>{
@@ -19,7 +20,11 @@ const Header = ({userData}) => {
   const changeHandler = (e) => {
     setSearchBook(e.target.value);
   }
-  console.log(searchbook);
+  //console.log(searchbook);
+
+  const onClick = () =>{
+    window.location.href = '/mybooks';
+  }
 
   return (
     <header className='header'>
@@ -31,7 +36,7 @@ const Header = ({userData}) => {
 
           <ul className='nav-list' id='nav-list'>
             <li><Link to='/bookguriinfo'>소개</Link></li>
-            <li><Link to='/mybooks'>내 서재</Link></li>
+            <li><Link to='/mybooks' onClick={onClick}>내 서재</Link></li>
             <li><Link to='/booklist'>책 구경</Link></li>
           </ul>
 

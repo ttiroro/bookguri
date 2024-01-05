@@ -53,8 +53,7 @@ const App = () => {
     }
     fetchdata();
   },[]);
-  console.log(userData);
-  
+  //console.log(userData);
   return (
       <BrowserRouter>
         <Scroll />

@@ -113,11 +113,13 @@ app.post('/login', async(req, res, next)=>{
 
 app.get('/mybooks', async (req, res) =>{
     if(!req.user){
-        res.send('login')
+        res.send('login 필요')
     } else {
-        let result = await db.collection('user').findOne({_id : new ObjectId(req.user._id)})
-        delete result.password //  비밀번호 항목은 삭제후 반영
-        res.json(result)
+        let userInfo = await db.collection('user').findOne({
+            _id : new ObjectId(req.user._id
+        )})
+        delete userInfo.password //  비밀번호 항목은 삭제후 반영
+        res.json(userInfo)
         console.log(req.user.username, ': 현재 로그인 중인 사용자')
     }
 })
@@ -129,14 +131,15 @@ app.post('/bookdetail', async (req, res)=>{
     try{
         if(!result){
             await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
-                $push : { readbooks : req.body.book }
+                $push : { 
+                    readbooks :  {
+                        bookIsbn : req.body.book,
+                        bookTitle : req.body.bookTitle,
+                        bookCover : req.body.bookCover,
+                        bookAuthor : req.body.bookAuthor
+                    }
+                }
             });
-            await db.collection('bookdata').insertOne({
-                bookIsbn : req.body.book,
-                bookTitle : req.body.bookTitle,
-                bookCover : req.body.bookCover,
-                bookAuthor : req.body.bookAuthor
-            })
             res.send("<script>alert('책을 서재에 담았습니다');</script>");
         } else {
             res.send("<script>alert('이미 서재에 담긴 책입니다.');</script>");
@@ -148,6 +151,6 @@ app.post('/bookdetail', async (req, res)=>{
 
 
 //제일 하단에 놓기
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/public/index.html'));
-});
+// app.get('*', function (req, res) {
+//     res.sendFile(path.join(__dirname, '../client/public/index.html'));
+// });
