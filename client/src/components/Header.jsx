@@ -22,10 +22,6 @@ const Header = ({userData}) => {
   }
   //console.log(searchbook);
 
-  const onClick = () =>{
-    window.location.href = '/mybooks';
-  }
-
   return (
     <header className='header'>
       <nav className='container'>
@@ -36,7 +32,7 @@ const Header = ({userData}) => {
 
           <ul className='nav-list' id='nav-list'>
             <li><Link to='/bookguriinfo'>소개</Link></li>
-            <li><Link to='/mybooks' onClick={onClick}>내 서재</Link></li>
+            <li><Link to='/mybooks'>내 서재</Link></li>
             <li><Link to='/booklist'>책 구경</Link></li>
           </ul>
 

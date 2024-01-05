@@ -13,6 +13,7 @@ import BookDetail from './components/BookDetail';
 import BookSearch from './pages/BookSearch';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import MyBookMemo from './components/MyBookMemo';
 
 const App = () => {
   axios.defaults.withCredentials = true;
@@ -62,6 +63,7 @@ const App = () => {
           <Route path='/' element={<Home bestSellerData={bestSellerData} newBookData={newBookData}/>} />
           <Route path='/bookguriinfo' element={<BookguriInfo />} />
           <Route path='/mybooks' element={<MyBooks userData={userData}/>} />
+          <Route path='/mybookmemo/:isbn' element={<MyBookMemo userData={userData} />} />
           <Route path='/booklist' element={<BookList bestSellerData={bestSellerData} newBookData={newBookData} />} />
           <Route path='/setting' element={<Setting />} />
           <Route path='/bookdetail/:isbn' element={<BookDetail userData={userData}/>} />

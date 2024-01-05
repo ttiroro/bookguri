@@ -50,7 +50,7 @@ const LoginMyBook = ({userData}) => {
                         userData.readbooks &&
                         userData.readbooks.map((item, index)=>(
 
-                        <Link className='mb-bookbox' key={index}>
+                        <Link to={`/mybookmemo/${item.bookIsbn}`} className='mb-bookbox' key={index}>
                             <div className='mb-book-cover'>
                                 <img src={item.bookCover} alt="cover" />
                             </div>

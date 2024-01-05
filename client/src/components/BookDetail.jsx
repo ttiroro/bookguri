@@ -39,6 +39,7 @@ const BookDetail = ({userData}) => {
         })
         .then(async(res)=>{
             console.log(res.config.data)
+            window.location.href = `/bookdetail/${bookData.item[0].isbn}`;
         })
         .catch((err)=>{
             console.log(err)
