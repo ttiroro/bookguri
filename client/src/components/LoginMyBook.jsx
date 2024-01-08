@@ -10,6 +10,7 @@ const LoginMyBook = ({userData}) => {
         return result;
     };
 
+
     return (
         <div className='mybooks'>
             <div className='container'>
@@ -47,8 +48,8 @@ const LoginMyBook = ({userData}) => {
                     <h3>내가 담은 책</h3>
                     <div className='mb-booklist'>
                     {
-                        userData.readbooks &&
-                        userData.readbooks.map((item, index)=>(
+                        userData.books &&
+                        userData.books.map((item, index)=>(
 
                         <Link to={`/mybookmemo/${item.bookIsbn}`} className='mb-bookbox' key={index}>
                             <div className='mb-book-cover'>

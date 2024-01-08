@@ -127,12 +127,12 @@ app.get('/mybooks', async (req, res) =>{
 
 app.post('/bookdetail', async (req, res)=>{
     console.log(req.user)
-    let result = await db.collection('user').findOne({ readbooks : req.body.book})
+    let result = await db.collection('user').findOne({ books : req.body.book})
     try{
         if(!result){
             await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
                 $push : { 
-                    readbooks :  {
+                    books :  {
                         bookIsbn : req.body.book,
                         bookTitle : req.body.bookTitle,
                         bookCover : req.body.bookCover,
