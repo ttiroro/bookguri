@@ -12,6 +12,17 @@ const BookDetail = ({userData}) => {
     const [myBookTitle, setMyBookTitle] = useState('');
     const [myBookCover, setMyBookCover] = useState('');
     const [myBookAuthor, setMyBookAuthor] = useState('');
+    const [addDate, setAddDate] = useState('')
+
+    // function currentDate(){
+    //     const date = new Date();
+    //     const year = String(date.getFullYear());
+    //     const month = String(date.getMonth()).padStart(2, "0");
+    //     const day = String(date.getDay()).padStart(2,'0');
+    //     const hours = String(date.getHours()).padStart(2,'0');
+    //     const minutes = String(date.getMinutes()).padStart(2,'0');
+    //     setAddDate(`${year}.${month}.${day} ${hours}:${minutes}`)
+    // }
 
     useEffect(() => {
         async function fetchdata() {
@@ -21,7 +32,7 @@ const BookDetail = ({userData}) => {
         }
         fetchdata();
     }, [isbn]);
-    console.log(bookData.item);
+    //console.log(bookData.item);
 
     // 판매가 콤마 찍는 함수
     function dotPrice(num) {
@@ -32,10 +43,11 @@ const BookDetail = ({userData}) => {
     const onSubmit = async (e) =>{
         e.preventDefault();
         await axios.post('/bookdetail', {
-            book : myBookIsbn,
+            bookIsbn : myBookIsbn,
             bookTitle : myBookTitle,
             bookCover : myBookCover,
-            bookAuthor : myBookAuthor
+            bookAuthor : myBookAuthor,
+            addDate : addDate
         })
         .then(async(res)=>{
             console.log(res.config.data)
@@ -51,6 +63,15 @@ const BookDetail = ({userData}) => {
         setMyBookTitle(bookData.item[0].title)
         setMyBookCover(bookData.item[0].cover)
         setMyBookAuthor(bookData.item[0].author)
+
+        const date = new Date();
+        let year = date.getFullYear();
+        let month = String(date.getMonth()+1).padStart(2, "0");
+        let day = String(date.getDate()).padStart(2, "0");
+        let hours = String(date.getHours()).padStart(2, "0");
+        let minutes = String(date.getMinutes()).padStart(2, "0");
+
+        setAddDate(`${year}.${month}.${day} ${hours}:${minutes}`)
     }
     return (
         <div className='book-detail'>

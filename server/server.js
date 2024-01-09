@@ -124,19 +124,20 @@ app.get('/mybooks', async (req, res) =>{
     }
 })
 
-
 app.post('/bookdetail', async (req, res)=>{
-    console.log(req.user)
-    let result = await db.collection('user').findOne({ books : req.body.book})
+    //console.log(req.user)
+    let result = await db.collection('user').find(
+        {books : { $elemMatch : { bookIsbn : req.body.bookIsbn}}})
     try{
         if(!result){
             await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
-                $push : { 
+                $addToSet : { 
                     books :  {
-                        bookIsbn : req.body.book,
+                        bookIsbn : req.body.bookIsbn,
                         bookTitle : req.body.bookTitle,
+                        bookAuthor : req.body.bookAuthor,
                         bookCover : req.body.bookCover,
-                        bookAuthor : req.body.bookAuthor
+                        addDate : req.body.addDate
                     }
                 }
             });

@@ -7,7 +7,6 @@ const MyBookMemo = ({userData}) => {
     let {isbn} = useParams();
 
     const [bookData, setBookData] = useState({});
-
     useEffect(() => {
         async function fetchdata() {
         const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
@@ -16,12 +15,17 @@ const MyBookMemo = ({userData}) => {
         }
         fetchdata();
     }, [isbn]);
-    console.log(bookData.item);
+    console.log(bookData);
+    console.log(userData)
 
+    
+
+    
     return (
         <div>
             {
                 bookData.item &&
+
                 <div>
                 <section className='mbm-sec1'>
                     <div className='container mbm-book-box'>
@@ -80,7 +84,7 @@ const MyBookMemo = ({userData}) => {
                     </section>
                 </div>
             </div>
-            }
+                })
         </div>
     )
 }
