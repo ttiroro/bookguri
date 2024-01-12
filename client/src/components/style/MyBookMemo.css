@@ -33,8 +33,40 @@
 }
 
 .mbm-book-left .mbm-book-btn{
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+.mbm-book-left .mbm-book-btn .mbm-btn-r,
+.mbm-book-left .mbm-book-btn .mbm-btn-y,
+.mbm-book-left .mbm-book-btn .mbm-btn-g{
+    padding: 10px 15px;
+    border-radius: 50px;
+    color: #555;
+    font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+.mbm-book-left .mbm-book-btn .mbm-btn-r:hover,
+.mbm-book-left .mbm-book-btn .mbm-btn-y:hover,
+.mbm-book-left .mbm-book-btn .mbm-btn-g:hover{
+    background-color: #fff;
+    color: #555;
+}
+.mbm-book-left .mbm-book-btn .mbm-btn-r{
+    background-color: #FF6B6B;
+    border: 3px solid #FF6B6B;
+}
+.mbm-book-left .mbm-book-btn .mbm-btn-y{
+    background-color: #FFD93D;
+    border: 3px solid #FFD93D;
+}
+.mbm-book-left .mbm-book-btn .mbm-btn-g{
+    background-color: #6BCB77;
+    border: 3px solid #6BCB77;
 }
 
 

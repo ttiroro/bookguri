@@ -9,21 +9,23 @@ const MyBookMemo = ({userData}) => {
     //bestseller 데이터 알라딘 서버에서 가져오는 부분
     const [bookData, setBookData] = useState({});
     const [currentBookIndex, setCurrentBookIndex] = useState('');
+
     useEffect(() => {
         async function fetchdata() {
-        const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
-        const { data } = await axios.get(API_URL);
-        setBookData(data);
+            const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
+            const { data } = await axios.get(API_URL);
+            setBookData(data);
         }
         fetchdata();
     }, [isbn]);
+    console.log(userData)
 
-
-    useEffect(()=>{
-        let result = userData.books.findIndex(obj => obj.bookIsbn === isbn);
-        setCurrentBookIndex(result)
-    }, [userData.books, isbn])
     // 현재 도서의 ISBN과 일치하는 user 데이터의 도서정보 index 찾기
+    useEffect(()=>{
+        let result = userData.books.findIndex(obj => obj.bookIsbn === isbn)
+            setCurrentBookIndex(result)
+    }, [userData.books, isbn])
+    
     
     
     return (
@@ -44,13 +46,13 @@ const MyBookMemo = ({userData}) => {
                                 </div>
                                 <div className='mbm-book-btn'>
                                     <form>
-                                        <button>안 읽은 책</button>
+                                        <button className='mbm-btn-r'>안 읽은 책</button>
                                     </form>
                                     <form>
-                                        <button>읽은 책</button>
+                                        <button className='mbm-btn-y'>읽는 책</button>
                                     </form>
                                     <form>
-                                        <button>다 읽은 책</button>
+                                        <button className='mbm-btn-g'>다 읽은 책</button>
                                     </form>
                                 </div>
                             </div>

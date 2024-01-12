@@ -14,16 +14,6 @@ const BookDetail = ({userData}) => {
     const [myBookAuthor, setMyBookAuthor] = useState('');
     const [addDate, setAddDate] = useState('')
 
-    // function currentDate(){
-    //     const date = new Date();
-    //     const year = String(date.getFullYear());
-    //     const month = String(date.getMonth()).padStart(2, "0");
-    //     const day = String(date.getDay()).padStart(2,'0');
-    //     const hours = String(date.getHours()).padStart(2,'0');
-    //     const minutes = String(date.getMinutes()).padStart(2,'0');
-    //     setAddDate(`${year}.${month}.${day} ${hours}:${minutes}`)
-    // }
-
     useEffect(() => {
         async function fetchdata() {
         const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;

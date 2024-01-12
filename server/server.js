@@ -125,11 +125,11 @@ app.get('/mybooks', async (req, res) =>{
 })
 
 app.post('/bookdetail', async (req, res)=>{
-    //console.log(req.user)
-    let result = await db.collection('user').find(
-        {books : { $elemMatch : { bookIsbn : req.body.bookIsbn}}})
+    let findBook = await db.collection('user').findOne(
+        {books : { bookIsbn : req.body.bookIsbn}})
+        console.log(findBook)
     try{
-        if(!result){
+        if(!findBook){
             await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
                 $addToSet : { 
                     books :  {
@@ -141,9 +141,11 @@ app.post('/bookdetail', async (req, res)=>{
                     }
                 }
             });
-            res.send("<script>alert('책을 서재에 담았습니다');</script>");
+            res.send("책을 서재에 담았습니다");
+            console.log('ok')
         } else {
-            res.send("<script>alert('이미 서재에 담긴 책입니다.');</script>");
+            res.send("이미 서재에 담긴 책입니다.");
+            console.log('no')
         }
     } catch(err){
         console.log(err)
