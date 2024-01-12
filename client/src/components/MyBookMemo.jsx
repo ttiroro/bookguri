@@ -6,6 +6,7 @@ import './style/MyBookMemo.css'
 const MyBookMemo = ({userData}) => {
     let {isbn} = useParams();
 
+    //bestseller 데이터 알라딘 서버에서 가져오는 부분
     const [bookData, setBookData] = useState({});
     useEffect(() => {
         async function fetchdata() {
@@ -15,16 +16,17 @@ const MyBookMemo = ({userData}) => {
         }
         fetchdata();
     }, [isbn]);
-    console.log(bookData);
-    console.log(userData)
 
-    
+
+    // 현재 도서의 ISBN과 일치하는 user 데이터의 도서정보 index 찾기
+    const currentBookIndex = userData.books.findIndex(obj => obj.bookIsbn === isbn);
 
     
     return (
         <div>
             {
                 bookData.item &&
+                userData.books &&
 
                 <div>
                 <section className='mbm-sec1'>
@@ -34,18 +36,29 @@ const MyBookMemo = ({userData}) => {
                         <div className='mbm-book-inner'>
                             <div className='mbm-book-cover'>
                                 <img src={bookData.item[0].cover} alt="cover"/>
+                                <div className='mbm-book-btn'>
+                                    <form>
+                                        <button>안 읽은 책</button>
+                                    </form>
+                                    <form>
+                                        <button>읽은 책</button>
+                                    </form>
+                                    <form>
+                                        <button>다 읽은 책</button>
+                                    </form>
+                                </div>
                             </div>
 
                             <div className='mbm-book-text' >
                                 <p className='mbm-book-writer'>지은이 | {bookData.item[0].author}</p>
                                 <p className='mbm-book-publisher'>출판사 | {bookData.item[0].publisher}</p>
-                                <p className='mbm-book-date'>출판일  |  {bookData.item[0].pubDate}</p>
                                 <p className='mbm-book-page'>페이지  |  {bookData.item[0].subInfo.itemPage} p</p>
-                                <p className='mbm-book-isbn'>ISBN  |  {bookData.item[0].isbn13}</p>
                                 <div className='mbm-book-category'>
                                     <p>주제분류  |  {bookData.item[0].categoryName}</p>
                                 </div>
+                                <p className='mbm-book-desc'> 책 소개 | <br/> {bookData.item[0].description}</p>
                             </div>
+
                         </div>
                     </div>
                 </section>
@@ -53,13 +66,17 @@ const MyBookMemo = ({userData}) => {
                 <div className='container'>
                     <section className='mbm-sec2'>
                         <div className='mbm-desc'>
-                            <p className='book-desc-title'>책 소개</p>
-                            <p className='book-desc-text'>{bookData.item[0].description}</p>
+                            <p className='book-desc-title'>도서 정보</p>
+                            <div>
+                                <p className='book-add-date'>서재에 담은 날  |  {userData.books[currentBookIndex].addDate}</p>
+                                <p className='book-read-date'>읽기 시작한 날 | </p>
+                                <p className='book-complete-date'>다 읽은 날 | </p>
+                            </div>
                         </div>
                     </section>
 
                     <section className='mbm-sec3'>
-                        <p>상세 정보</p>
+                        <p>내 마음문장</p>
                     </section>
 
                     <section className='mbm-sec4'>
