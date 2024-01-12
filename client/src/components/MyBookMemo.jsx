@@ -8,6 +8,7 @@ const MyBookMemo = ({userData}) => {
 
     //bestseller 데이터 알라딘 서버에서 가져오는 부분
     const [bookData, setBookData] = useState({});
+    const [currentBookIndex, setCurrentBookIndex] = useState('');
     useEffect(() => {
         async function fetchdata() {
         const API_URL = `/ttb/api/ItemLookUp.aspx?ttbkey=ttbdltjswjd2220957001&itemIdType=ISBN&ItemId=${isbn}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,reviewList`;
@@ -18,9 +19,12 @@ const MyBookMemo = ({userData}) => {
     }, [isbn]);
 
 
+    useEffect(()=>{
+        let result = userData.books.findIndex(obj => obj.bookIsbn === isbn);
+        setCurrentBookIndex(result)
+    }, [userData.books, isbn])
     // 현재 도서의 ISBN과 일치하는 user 데이터의 도서정보 index 찾기
-    const currentBookIndex = userData.books.findIndex(obj => obj.bookIsbn === isbn);
-
+    
     
     return (
         <div>
@@ -34,8 +38,10 @@ const MyBookMemo = ({userData}) => {
                         <p className='mbm-book-title'>{bookData.item[0].title}</p>
 
                         <div className='mbm-book-inner'>
-                            <div className='mbm-book-cover'>
-                                <img src={bookData.item[0].cover} alt="cover"/>
+                            <div className='mbm-book-left'>
+                                <div className='mbm-book-cover'>
+                                    <img src={bookData.item[0].cover} alt="cover"/>
+                                </div>
                                 <div className='mbm-book-btn'>
                                     <form>
                                         <button>안 읽은 책</button>

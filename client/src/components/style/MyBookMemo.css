@@ -18,14 +18,27 @@
     padding-bottom: 70px;
     margin: 0 auto;
 }
-.mbm-book-inner .mbm-book-cover{
+.mbm-book-inner .mbm-book-left{
     width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
 }
 .mbm-book-inner .mbm-book-cover img{
     max-height: 350px;
     max-width: 250px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.08);
 }
+
+.mbm-book-left .mbm-book-btn{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 .mbm-book-inner .mbm-book-text{
     display: flex;
     flex-direction: column;
