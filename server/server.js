@@ -125,27 +125,31 @@ app.get('/mybooks', async (req, res) =>{
 })
 
 app.post('/bookdetail', async (req, res)=>{
-    let findBook = await db.collection('user').findOne(
-        {books : { bookIsbn : req.body.bookIsbn}})
-        console.log(findBook)
+    let findUser = await db.collection('user').findOne({
+            _id : req.user._id
+        })
+        //console.log(findUser, 'find')
     try{
-        if(!findBook){
-            await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
-                $addToSet : { 
-                    books :  {
-                        bookIsbn : req.body.bookIsbn,
-                        bookTitle : req.body.bookTitle,
-                        bookAuthor : req.body.bookAuthor,
-                        bookCover : req.body.bookCover,
-                        addDate : req.body.addDate
+        for(i=0; i < findUser.books.length; i++){
+            if(findUser.books[i].bookIsbn === req.body.bookIsbn){
+                await db.collection('user').updateOne({ _id : new ObjectId(req.user._id)},{
+                    $addToSet : { 
+                        books :  {
+                            bookIsbn : req.body.bookIsbn,
+                            bookTitle : req.body.bookTitle,
+                            bookAuthor : req.body.bookAuthor,
+                            bookCover : req.body.bookCover,
+                            addDate : req.body.addDate
+                        }
                     }
-                }
-            });
-            res.send("책을 서재에 담았습니다");
-            console.log('ok')
-        } else {
-            res.send("이미 서재에 담긴 책입니다.");
-            console.log('no')
+                });
+                //res.send("책을 서재에 담았습니다");
+                console.log('ok')
+
+            } else {
+                //res.send("이미 서재에 담긴 책입니다.");
+                console.log('no')
+            }
         }
     } catch(err){
         console.log(err)
